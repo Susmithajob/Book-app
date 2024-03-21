@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/tailwind.css' />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="flex w-full h-12 bg-purple-200">
+        <span class="text-red-900 text-xl pl-2 text-center">
+            <h1 class="text-2xl">Tinker Books</h1>
+        </span>
+        <div class="m-auto w-1/3">
+            <input type="search" placeholder="Search here" class="w-full h-8 pl-1 border border-gray-400 rounded searchbar"
+                onkeyup="search()">
+        </div>
+    </div>
+
+    <div class="flex justify-evenly flex-wrap mt-4 outer ">
+        <%books.forEach((book,index)=>{%>
+            <div class="w-60 h-50 flex-col flex-wrap p-2 m-4 border-2 border-purple-300 rounded-3xl hover:bg-slate-300 hover:translate-x-2 hover:opacity-50">
+                <div class="w-full h-28 border-b-2">
+                    <img src="data:<%= book.imageData.contentType %>;base64,<%= book.imageData.data.toString('base64') %>"
+                        alt="" class="object-contain h-24 m-auto">
+                </div>
+                <div class="w-full p-4 leading-5 description">
+                    <h3 class="italic">Book Name : <span class="font-semibold book">
+                            <%=book.bookName%>
+                        </span>
+                    </h3>
+                    <h4 class="mt-1 italic">Author Name : <span class="font-semibold author">
+                            <%=book.author%>
+                        </span>
+                    </h4>
+                </div>
+                <button class="text-blue-400 ml-5 btn" onclick="display(<%=index%>)">Know More</button>
+
+                <div class="w-full p-4 leading-5 details hidden">
+                    <p class="text-xs">
+                        <%=book.description%>
+                    </p>
+                </div>
+            </div>
+            <%})%>
+    </div>
+    <script>
+        function display(index) {
+            const details = document.getElementsByClassName('details');
+            const description = document.getElementsByClassName('description');
+            const descriptionstatus = description[index].style.display;
+
+            if (descriptionstatus === 'none') {
+                details[index].style.display = 'none';
+                description[index].style.display = 'block';
+                document.getElementsByClassName('btn')[index].innerHTML = "Know More";
+            } else {
+                details[index].style.display = 'block';
+                description[index].style.display = 'none';
+                document.getElementsByClassName('btn')[index].innerHTML = "Know Less";
+            }
+        }
+
+        function search() {
+            const searchText = document.querySelector('.searchbar').value.toLowerCase();
+
+            document.querySelectorAll('.outer > div').forEach((bookDiv) => {
+                const bookName = bookDiv.querySelector('.book').textContent.toLowerCase();
+                const authorName = bookDiv.querySelector('.author').textContent.toLowerCase();
+
+                if (bookName.includes(searchText) || authorName.includes(searchText)) {
+                    bookDiv.style.display = 'block';
+                } else {
+                    bookDiv.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

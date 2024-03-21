@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/tailwind.css'/>
+    <title>Admin</title>
+</head>
+<body>
+    <h1 class="text-center mt-2 text-green-600 font-serif text-2xl">WELCOME TO ADMIN PAGE..</h1>
+    <div class="m-auto mt-6 p-4 w-3/4 border-2 border-green-500 rounded ">
+        <form action="/admin" method="post" enctype="multipart/form-data">
+        <label for="bookName">Book Name</label><br>
+        <input type="text" placeholder="Book Name" name="bookName" class="w-full border border-green-200 rounded mt-1"><br>
+        <label for="author">Name of Author</label><br>
+        <input type="text" placeholder="Author Name" name="author"  class="w-full border border-green-200 rounded mt-1"><br>
+        <label for="description">Description</label><br>
+        <textarea placeholder="Description" name="description" rows="3"  class="w-full border border-green-200 rounded mt-1"></textarea><br>
+        <input type="file" name="imageData" id="" class="mt-1 hover:cursor-pointer"><br>
+        <button class="bg-green-200  hover:bg-red-400 rounded-xl p-2 mt-2 hover:cursor-pointer">Add book</button>
+    </form>
+</div>
+    
+</body>
+</html>
