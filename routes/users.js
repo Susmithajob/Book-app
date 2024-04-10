@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/bookdetail");
+mongoose.connect("mongodb://127.0.0.1:27017/bookdetail");//name of database
 
 const bookSchema = mongoose.Schema({
   bookName: {
@@ -24,4 +24,4 @@ const bookSchema = mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model("bookdetails",bookSchema);
+module.exports = mongoose.model("bookdetails",bookSchema);//name of collection

@@ -4,7 +4,7 @@ var bookModel = require('./users');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  bookModel.find({})
+  bookModel.find()
     .then(bookModels => {
       res.render('display', {
         books: bookModels

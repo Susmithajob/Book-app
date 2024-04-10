@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/tailwind.css'/>
+    <title>Admin</title>
+</head>
+<body style="background-image: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('/images/books-seamless-pattern-doodle-outline-textbooks_107791-9584.avif');">
+    <h1 class="text-center mt-2 text-black font-serif text-4xl bg-slate-50">You can update the book details below</h1>
+    <div class="m-auto mt-6 p-4 w-3/4 border-2 border-green-500 rounded-xl font-serif bg-green-100">
+        <form action="/admin/update" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="bookId" value="<%=book._id %>">
+            <label for="bookName" class="font-semibold">Book Name</label><br>
+            <input type="text" name="bookName" class="w-full border border-green-200 rounded mt-1" value="<%= book.bookName %>"><br>
+            <label for="author" class="font-semibold">Name of Author</label><br>
+            <input type="text" name="author" class="w-full border border-green-200 rounded mt-1" value="<%= book.author %>"><br>
+            <label for="description" class="font-semibold">Description</label><br>
+            <textarea name="description" rows="3" class="w-full border border-green-200 rounded mt-1"><%= book.description %></textarea><br>
+            <% if (book.imageData && book.imageData.data) { %>
+                <img name="imageData" src="data:<%= book.imageData.contentType %>;base64,<%= book.imageData.data.toString('base64') %>" alt="Book Image" class="mt-2 border border-gray-400">
+            <% } %>
+            <input type="file" name="imageData" id="" class="mt-1 hover:cursor-pointer"><br>
+            <button class="bg-green-200 hover:bg-red-400 rounded-xl p-2 mt-2 hover:cursor-pointer border-2 border-black" type="submit">Update book</button>
+        </form>
+    </div>   
+</body>
+</html>

@@ -6,20 +6,29 @@
     <link rel='stylesheet' href='/stylesheets/tailwind.css'/>
     <title>Admin</title>
 </head>
-<body>
-    <h1 class="text-center mt-2 text-green-600 font-serif text-2xl">WELCOME TO ADMIN PAGE..</h1>
-    <div class="m-auto mt-6 p-4 w-3/4 border-2 border-green-500 rounded ">
+<body style="background-image: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('/images/books-seamless-pattern-doodle-outline-textbooks_107791-9584.avif');">
+    <h1 class="text-center mt-2 text-black font-serif text-4xl bg-slate-50">WELCOME TO ADMIN PAGE..</h1>
+    <div class="m-auto mt-6 p-4 w-3/4 border-2 border-green-500 rounded-xl font-serif bg-green-100">
         <form action="/admin" method="post" enctype="multipart/form-data">
-        <label for="bookName">Book Name</label><br>
+        <label for="bookName" class="font-semibold">Book Name</label><br>
         <input type="text" placeholder="Book Name" name="bookName" class="w-full border border-green-200 rounded mt-1"><br>
-        <label for="author">Name of Author</label><br>
+        <label for="author" class="font-semibold">Name of Author</label><br>
         <input type="text" placeholder="Author Name" name="author"  class="w-full border border-green-200 rounded mt-1"><br>
-        <label for="description">Description</label><br>
+        <label for="description" class="font-semibold">Description</label><br>
         <textarea placeholder="Description" name="description" rows="3"  class="w-full border border-green-200 rounded mt-1"></textarea><br>
+        <label for="image" class="font-semibold">Add Image</label><br>
         <input type="file" name="imageData" id="" class="mt-1 hover:cursor-pointer"><br>
-        <button class="bg-green-200  hover:bg-red-400 rounded-xl p-2 mt-2 hover:cursor-pointer">Add book</button>
+        <button class="bg-green-700  hover:bg-red-400 rounded-xl p-2 mt-2 hover:cursor-pointer border-2 border-black">Add book</button>
     </form>
+    
 </div>
+<br>
+<h3 class="text-green-700 text-center">You have <span class="text-red-500"><%=count%></span> books in your library</h3>
+<div class="flex justify-center">
+    <a href="/admin/booklist" class="hover:text-blue-600">See full list of books</a>
+</div>
+
+
     
 </body>
 </html>

@@ -8,21 +8,24 @@
     <title>Document</title>
 </head>
 
-<body>
+<body style="background-image: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('/images/books-seamless-pattern-doodle-outline-textbooks_107791-9584.avif');">
+
+
     <div class="flex w-full h-12 bg-purple-200">
         <span class="text-red-900 text-xl pl-2 text-center">
             <h1 class="text-2xl">Tinker Books</h1>
         </span>
         <div class="m-auto w-1/3">
-            <input type="search" placeholder="Search here" class="w-full h-8 pl-1 border border-gray-400 rounded searchbar"
+            <input type="search" placeholder="Search here" class="w-full h-8 pl-2 border border-gray-400 rounded-full searchbar"
                 onkeyup="search()">
         </div>
     </div>
 
     <div class="flex justify-evenly flex-wrap mt-4 outer ">
         <%books.forEach((book,index)=>{%>
-            <div class="w-60 h-50 flex-col flex-wrap p-2 m-4 border-2 border-purple-300 rounded-3xl hover:bg-slate-300 hover:translate-x-2 hover:opacity-50">
-                <div class="w-full h-28 border-b-2">
+            <div class="w-60 h-50 flex-col flex-wrap p-2 m-4 border-2 border-purple-400 rounded-3xl hover:bg-slate-300 hover:translate-x-2 " style="background-color: rgba(204, 180, 206, 0.9);">
+
+                <div class="w-full h-28 border-b-2 border-gray-700">
                     <img src="data:<%= book.imageData.contentType %>;base64,<%= book.imageData.data.toString('base64') %>"
                         alt="" class="object-contain h-24 m-auto">
                 </div>

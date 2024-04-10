@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/tailwind.css' />
+    <title>Book List</title>
+</head>
+<body style="background-image: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('/images/books-seamless-pattern-doodle-outline-textbooks_107791-9584.avif');">
+    <header>
+        <h1 class="text-center mt-2 text-black font-serif text-4xl bg-slate-50">BOOK LIST</h1>
+    </header>
+    <table class="border-slate-400 p-0.5 m-auto mt-2 bg-green-50">
+        <thead>
+            <tr>
+            <th class="border-2 border-green-400 text-lg p-1">Sl No</th>
+            <th class="border-2 border-green-400 text-lg">Book Name</th>
+            <th class="border-2 border-green-400 text-lg">Author Name</th>
+            <th class="border-2 border-green-400 text-lg">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach((book, index) => { %>
+            <tr>
+                <td class="border-2 border-green-400 p-0.5"><%= index + 1 %></td>
+                <td class="border-2 border-green-400 p-0.5 max-w-96"><%= book.bookName %></td>
+                <td class="border-2 border-green-400 p-0.5"><%= book.author %></td>
+                <td class="border-2 border-green-400 p-0.5">
+                    <form action="/admin/edit" method="get" >
+                        <input type="hidden" name="bookId" value="<%= book._id %>">
+                        <button class="bg-slate-400 hover:cursor-pointer hover:bg-yellow-300 border border-black rounded m-2 p-0.5" type="submit">Edit</button>
+                    </form>
+                    <form action="/admin/delete" method="post" >
+                        <input type="hidden" name="bookId" value="<%= book._id %>">
+                        <button class="bg-red-200 hover:cursor-pointer hover:bg-red-500 border border-black rounded p-0.5 m-2" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
